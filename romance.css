@@ -284,19 +284,19 @@ body.butterflies-3d-ready .butterflies { display: none; }
 }
 
 .butterfly-gif--gold img {
-  mix-blend-mode: screen;
+  mix-blend-mode: normal;
   filter: saturate(1.35) contrast(1.1) drop-shadow(0 0 10px #f5c94c99);
 }
 
 .butterfly-gif--cardinal img {
-  mix-blend-mode: multiply;
+  mix-blend-mode: normal;
   filter: saturate(1.7) brightness(1.8) contrast(1.15) drop-shadow(0 0 12px #ff9b3caa);
 }
 
 .butterfly-gif--silver img,
 .butterfly-gif--morpho img,
 .butterfly-gif--white img {
-  mix-blend-mode: screen;
+  mix-blend-mode: normal;
   filter: saturate(1.45) contrast(1.12) drop-shadow(0 0 14px #a8eaffaa);
 }
 
@@ -304,11 +304,11 @@ body.butterflies-3d-ready .butterflies { display: none; }
 .butterfly-gif--white img { filter: saturate(.7) brightness(1.25) contrast(1.1) drop-shadow(0 0 14px #fff8ffaa); }
 
 @keyframes butterfly-gif-flight {
-  0% { transform: translate3d(-22px, 14px, var(--gif-depth)) rotateZ(var(--gif-rotate)) rotateY(-13deg) scale(.88); }
-  24% { transform: translate3d(48px, -34px, calc(var(--gif-depth) + 45px)) rotateZ(calc(var(--gif-rotate) + 8deg)) rotateY(12deg) scale(1); }
-  50% { transform: translate3d(-8px, -82px, calc(var(--gif-depth) - 20px)) rotateZ(calc(var(--gif-rotate) - 5deg)) rotateY(-8deg) scale(.94); }
-  76% { transform: translate3d(-58px, 22px, calc(var(--gif-depth) + 28px)) rotateZ(calc(var(--gif-rotate) + 11deg)) rotateY(14deg) scale(1.04); }
-  100% { transform: translate3d(-22px, 14px, var(--gif-depth)) rotateZ(var(--gif-rotate)) rotateY(-13deg) scale(.88); }
+  0% { transform: translate3d(-8vw, 14px, var(--gif-depth)) rotateZ(var(--gif-rotate)) rotateY(-13deg) scale(.88); }
+  24% { transform: translate3d(22vw, -34px, calc(var(--gif-depth) + 45px)) rotateZ(calc(var(--gif-rotate) + 8deg)) rotateY(12deg) scale(1); }
+  50% { transform: translate3d(56vw, 28px, calc(var(--gif-depth) - 20px)) rotateZ(calc(var(--gif-rotate) - 5deg)) rotateY(-8deg) scale(.94); }
+  76% { transform: translate3d(91vw, -45px, calc(var(--gif-depth) + 28px)) rotateZ(calc(var(--gif-rotate) + 11deg)) rotateY(14deg) scale(1.04); }
+  100% { transform: translate3d(133vw, 12px, var(--gif-depth)) rotateZ(var(--gif-rotate)) rotateY(-13deg) scale(.88); }
 }
 
 .butterfly {
