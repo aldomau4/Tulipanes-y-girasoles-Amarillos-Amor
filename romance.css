@@ -246,6 +246,71 @@ em {
 
 body.butterflies-3d-ready .butterflies { display: none; }
 
+.butterflies.butterflies--gif {
+  position: fixed;
+  inset: 0;
+  z-index: 22;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 1100px;
+  transform-style: preserve-3d;
+}
+
+.butterfly-gif {
+  position: absolute;
+  display: block;
+  width: calc(180px * var(--gif-size));
+  transform-style: preserve-3d;
+  animation: butterfly-gif-flight var(--gif-duration) ease-in-out var(--gif-delay) infinite;
+  filter: drop-shadow(0 12px 10px #000b);
+}
+
+.butterfly-gif::before {
+  position: absolute;
+  inset: 25% 15%;
+  border-radius: 50%;
+  background: #e9c85d66;
+  content: '';
+  filter: blur(18px);
+  transform: translateZ(-20px);
+}
+
+.butterfly-gif img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+.butterfly-gif--gold img {
+  mix-blend-mode: screen;
+  filter: saturate(1.35) contrast(1.1) drop-shadow(0 0 10px #f5c94c99);
+}
+
+.butterfly-gif--cardinal img {
+  mix-blend-mode: multiply;
+  filter: saturate(1.7) brightness(1.8) contrast(1.15) drop-shadow(0 0 12px #ff9b3caa);
+}
+
+.butterfly-gif--silver img,
+.butterfly-gif--morpho img,
+.butterfly-gif--white img {
+  mix-blend-mode: screen;
+  filter: saturate(1.45) contrast(1.12) drop-shadow(0 0 14px #a8eaffaa);
+}
+
+.butterfly-gif--morpho img { filter: saturate(1.7) contrast(1.18) drop-shadow(0 0 18px #20d9ffaa); }
+.butterfly-gif--white img { filter: saturate(.7) brightness(1.25) contrast(1.1) drop-shadow(0 0 14px #fff8ffaa); }
+
+@keyframes butterfly-gif-flight {
+  0% { transform: translate3d(-22px, 14px, var(--gif-depth)) rotateZ(var(--gif-rotate)) rotateY(-13deg) scale(.88); }
+  24% { transform: translate3d(48px, -34px, calc(var(--gif-depth) + 45px)) rotateZ(calc(var(--gif-rotate) + 8deg)) rotateY(12deg) scale(1); }
+  50% { transform: translate3d(-8px, -82px, calc(var(--gif-depth) - 20px)) rotateZ(calc(var(--gif-rotate) - 5deg)) rotateY(-8deg) scale(.94); }
+  76% { transform: translate3d(-58px, 22px, calc(var(--gif-depth) + 28px)) rotateZ(calc(var(--gif-rotate) + 11deg)) rotateY(14deg) scale(1.04); }
+  100% { transform: translate3d(-22px, 14px, var(--gif-depth)) rotateZ(var(--gif-rotate)) rotateY(-13deg) scale(.88); }
+}
+
 .butterfly {
   position: absolute;
   display: block;
@@ -749,6 +814,12 @@ body.butterflies-3d-ready .butterflies { display: none; }
   body.mobile-floral-settled .music-toggle { opacity: 1; pointer-events: auto; }
   body.mobile-floral-settled .garden-caption { animation-play-state: running; }
   #butterfly-canvas { opacity: .96; }
+  .butterfly-gif { width: calc(145px * var(--gif-size)); }
+  .butterflies.butterflies--gif { z-index: 22; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .butterfly-gif { animation: none; }
 }
 
 @media (max-width: 760px) and (max-height: 700px) {
