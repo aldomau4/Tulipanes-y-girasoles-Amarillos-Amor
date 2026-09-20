@@ -262,17 +262,7 @@ body.butterflies-3d-ready .butterflies { display: none; }
   width: calc(180px * var(--gif-size));
   transform-style: preserve-3d;
   animation: butterfly-gif-flight var(--gif-duration) ease-in-out var(--gif-delay) infinite;
-  filter: drop-shadow(0 12px 10px #000b);
-}
-
-.butterfly-gif::before {
-  position: absolute;
-  inset: 25% 15%;
-  border-radius: 50%;
-  background: #e9c85d66;
-  content: '';
-  filter: blur(18px);
-  transform: translateZ(-20px);
+  filter: none;
 }
 
 .butterfly-gif img {
@@ -280,6 +270,7 @@ body.butterflies-3d-ready .butterflies { display: none; }
   display: block;
   width: 100%;
   height: auto;
+  background: transparent;
   user-select: none;
 }
 
