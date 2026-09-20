@@ -277,13 +277,11 @@ body.butterflies-3d-ready .butterflies { display: none; }
 .butterfly-gif--gold img {
   mix-blend-mode: normal;
   transform: scaleX(-1);
-  filter: saturate(1.35) contrast(1.1) drop-shadow(0 0 10px #f5c94c99);
 }
 
 .butterfly-gif--amber img {
   mix-blend-mode: normal;
   transform: scaleX(-1);
-  filter: saturate(1.55) contrast(1.15) drop-shadow(0 0 12px #ff9b3caa);
 }
 
 .butterfly-gif--silver img,
@@ -291,14 +289,11 @@ body.butterflies-3d-ready .butterflies { display: none; }
 .butterfly-gif--white img,
 .butterfly-gif--tiny img {
   mix-blend-mode: normal;
-  filter: saturate(1.45) contrast(1.12) drop-shadow(0 0 14px #a8eaffaa);
 }
 
 .butterfly-gif--morpho img {
   transform: rotate(90deg);
-  filter: saturate(1.7) contrast(1.18) drop-shadow(0 0 18px #20d9ffaa);
 }
-.butterfly-gif--white img { filter: saturate(.7) brightness(1.25) contrast(1.1) drop-shadow(0 0 14px #fff8ffaa); }
 
 .butterfly-gif--static {
   animation: butterfly-gif-appear 1.8s ease var(--gif-delay) both;
