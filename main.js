@@ -261,16 +261,19 @@ function configureMusic() {
 
     song.src = CONFIG.song.src;
     song.autoplay = true;
+    song.muted = true;
     song.volume = .45;
     musicToggle.addEventListener('click', toggleMusic);
     song.play().then(() => musicToggle.classList.add('is-playing')).catch(() => undefined);
     document.addEventListener('pointerdown', () => {
+        song.muted = false;
         if (song.paused) song.play().then(() => musicToggle.classList.add('is-playing')).catch(() => undefined);
     }, { passive: true });
 }
 
 function toggleMusic() {
     if (song.paused) {
+        song.muted = false;
         song.play().then(() => musicToggle.classList.add('is-playing')).catch(() => undefined);
         return;
     }
@@ -289,12 +292,18 @@ startButton.addEventListener('click', () => {
 
     const firstMemory = moments.querySelector('.moment[data-media="video"]') || moments.querySelector('.moment--media') || moments.querySelector('.moment');
     moments.classList.add('is-focused');
-    firstMemory?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
     window.setTimeout(() => moments.classList.remove('is-focused'), 2600);
 
     if (CONFIG.song.src) {
+        song.muted = false;
         song.play().then(() => musicToggle.classList.add('is-playing')).catch(() => undefined);
     }
+
+    const scrollToMemory = () => {
+        firstMemory?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+    };
+    const scrollDelay = window.matchMedia('(max-width: 760px)').matches ? 900 : 0;
+    window.setTimeout(scrollToMemory, scrollDelay);
 });
 
 song.addEventListener('pause', () => musicToggle.classList.remove('is-playing'));
