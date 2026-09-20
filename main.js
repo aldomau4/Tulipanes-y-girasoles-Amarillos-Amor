@@ -26,6 +26,19 @@ const mediaViewer = document.getElementById('media-viewer');
 const mediaViewerContent = document.getElementById('media-viewer-content');
 const mediaViewerCaption = document.getElementById('media-viewer-caption');
 
+function stageMobileFloralIntro() {
+    if (!window.matchMedia('(max-width: 760px)').matches) return;
+
+    document.body.classList.add('mobile-floral-intro');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.body.classList.add('mobile-floral-settled');
+        return;
+    }
+
+    window.setTimeout(() => document.body.classList.add('mobile-floral-settled'), 5200);
+}
+
+stageMobileFloralIntro();
 document.body.classList.remove('container');
 garden.append(finalMessage);
 document.getElementById('intro').textContent = CONFIG.intro;
