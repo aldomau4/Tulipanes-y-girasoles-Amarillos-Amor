@@ -16,6 +16,7 @@ const CONFIG = {
 };
 
 const hearts = document.getElementById('hearts');
+const butterflies = document.getElementById('butterflies');
 const moments = document.getElementById('moments');
 const song = document.getElementById('song');
 const musicToggle = document.getElementById('music-toggle');
@@ -179,6 +180,42 @@ function createHeartConstellation() {
     });
 }
 
+function createButterflies() {
+    const profiles = [
+        { x: 12, y: 23, size: .62, depth: 70, duration: 22, delay: -4, flap: 1.05, color: '#d9a2e8', accent: '#fff0ff' },
+        { x: 28, y: 44, size: .45, depth: 30, duration: 18, delay: -11, flap: .9, color: '#f2b35e', accent: '#fff0bd' },
+        { x: 44, y: 17, size: .5, depth: 120, duration: 24, delay: -7, flap: 1.2, color: '#82c9dd', accent: '#e5fbff' },
+        { x: 62, y: 35, size: .74, depth: 45, duration: 26, delay: -17, flap: 1, color: '#f0a7bf', accent: '#ffe7f0' },
+        { x: 82, y: 22, size: .4, depth: 150, duration: 20, delay: -13, flap: .82, color: '#e6cf69', accent: '#fff9c7' },
+        { x: 88, y: 58, size: .58, depth: 85, duration: 25, delay: -3, flap: 1.15, color: '#a8d78b', accent: '#efffdc' },
+        { x: 20, y: 70, size: .38, depth: 20, duration: 19, delay: -9, flap: .76, color: '#f19aa8', accent: '#ffe2e8' },
+        { x: 72, y: 76, size: .5, depth: 105, duration: 23, delay: -15, flap: 1.08, color: '#9cb8ed', accent: '#ebf0ff' },
+    ];
+
+    profiles.forEach(profile => {
+        const butterfly = document.createElement('span');
+        butterfly.className = 'butterfly';
+        butterfly.style.left = `${profile.x}%`;
+        butterfly.style.top = `${profile.y}%`;
+        butterfly.style.setProperty('--butterfly-size', profile.size);
+        butterfly.style.setProperty('--butterfly-depth', `${profile.depth}px`);
+        butterfly.style.setProperty('--butterfly-duration', `${profile.duration}s`);
+        butterfly.style.setProperty('--butterfly-delay', `${profile.delay}s`);
+        butterfly.style.setProperty('--butterfly-flap', `${profile.flap}s`);
+        butterfly.style.setProperty('--butterfly-color', profile.color);
+        butterfly.style.setProperty('--butterfly-accent', profile.accent);
+
+        const leftWing = document.createElement('span');
+        leftWing.className = 'butterfly__wing butterfly__wing--left';
+        const rightWing = document.createElement('span');
+        rightWing.className = 'butterfly__wing butterfly__wing--right';
+        const body = document.createElement('span');
+        body.className = 'butterfly__body';
+        butterfly.append(leftWing, rightWing, body);
+        butterflies.append(butterfly);
+    });
+}
+
 function createMoment(item, index) {
     const isMobile = window.innerWidth <= 760;
     const column = index % 2;
@@ -329,6 +366,7 @@ createBotanicalGarden();
 createStars();
 createHeartConstellation();
 createHearts();
+createButterflies();
 renderMoments();
 configureMusic();
 window.addEventListener('pointermove', event => {
