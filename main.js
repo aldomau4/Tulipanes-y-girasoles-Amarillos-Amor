@@ -265,16 +265,28 @@ function configureMusic() {
     song.volume = .45;
     musicToggle.addEventListener('click', toggleMusic);
     song.play().then(() => musicToggle.classList.add('is-playing')).catch(() => undefined);
-    document.addEventListener('pointerdown', () => {
-        song.muted = false;
-        if (song.paused) song.play().then(() => musicToggle.classList.add('is-playing')).catch(() => undefined);
-    }, { passive: true });
+    const activateMusic = () => playMusicWithSound();
+    ['pointerdown', 'touchstart', 'click', 'keydown'].forEach(eventName => {
+        document.addEventListener(eventName, activateMusic, { passive: true });
+    });
 }
+
+function playMusicWithSound() {
+    if (!CONFIG.song.src) return Promise.resolve();
+
+    song.muted = false;
+    return song.play().then(() => musicToggle.classList.add('is-playing')).catch(() => undefined);
+}
+
+window.addEventListener('message', event => {
+    if (event.origin === window.location.origin && event.data?.type === 'start-flower-music') {
+        playMusicWithSound();
+    }
+});
 
 function toggleMusic() {
     if (song.paused) {
-        song.muted = false;
-        song.play().then(() => musicToggle.classList.add('is-playing')).catch(() => undefined);
+        playMusicWithSound();
         return;
     }
 
@@ -295,8 +307,7 @@ startButton.addEventListener('click', () => {
     window.setTimeout(() => moments.classList.remove('is-focused'), 2600);
 
     if (CONFIG.song.src) {
-        song.muted = false;
-        song.play().then(() => musicToggle.classList.add('is-playing')).catch(() => undefined);
+        playMusicWithSound();
     }
 
     const scrollToMemory = () => {
