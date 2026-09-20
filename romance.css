@@ -619,10 +619,10 @@ em {
 @media (max-width: 760px) {
   body { overflow-x: hidden; overflow-y: auto; }
   .experience { display: flex; min-height: 0; flex-direction: column; overflow: visible; }
-  .love-copy { position: relative; top: auto; left: auto; order: 1; width: 100%; padding: 6vh 7vw 4vh; }
+  .love-copy { position: relative; top: auto; left: auto; order: 2; width: 100%; padding: 6vh 7vw 8vh; }
   h1 { font-size: clamp(42px, 14vw, 62px); line-height: .92; letter-spacing: -1.5px; }
   .intro { width: min(270px, 100%); margin: 17px 0; font-size: clamp(11px, 3.2vw, 12px); line-height: 1.65; }
-  .garden { position: relative; inset: auto; order: 2; width: 100%; height: 900px; min-height: 900px; transform: none; overflow: hidden; }
+  .garden { position: relative; inset: auto; order: 1; width: 100%; height: 900px; min-height: 900px; transform: none; overflow: hidden; }
   .garden .flowers { bottom: -12vmin; transform: translateX(-50%) translateZ(55px) scale(.7); }
   .botanical-garden { right: -4vw; bottom: -2vh; width: 180px; height: 190px; transform: translateZ(85px) rotateY(-8deg); }
   .heart-constellation { top: 3%; right: 2%; width: 180px; height: 160px; transform: translateZ(70px) scale(.72) rotate(-8deg); }
